@@ -5,16 +5,18 @@ var SSE = require('sse')
 
 var myClient;
 var nextTimeout;
-var reRunCount = 3;
+var reRunCount = 0;
 var count = 0;
 
-var test_timeouts = [ 10000, 500, 1200, 2 ];
+var test_timeouts = [ 500 ];
 
 var tests_cases = [
-	"test1",
-	" test2",
-	"test3 ",
-	" test4 ",
+"+++***"
+
+// 	"test1",
+// 	" test2",
+// 	"test3 ",
+// 	" test4 ",
 ];
 
 var server = http.createServer(function(req, res) {
