@@ -15,6 +15,7 @@
 		2AB144211BBCA88600D1071B /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144201BBCA88600D1071B /* EventSource.swift */; settings = {ASSET_TAGS = (); }; };
 		2AB144231BC2C5A200D1071B /* Locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144221BC2C5A200D1071B /* Locking.swift */; settings = {ASSET_TAGS = (); }; };
 		2AB144251BC2DB8800D1071B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144241BC2DB8800D1071B /* State.swift */; settings = {ASSET_TAGS = (); }; };
+		2AB144271BC309D500D1071B /* TestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144261BC309D500D1071B /* TestState.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2AB144201BBCA88600D1071B /* EventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
 		2AB144221BC2C5A200D1071B /* Locking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locking.swift; sourceTree = "<group>"; };
 		2AB144241BC2DB8800D1071B /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		2AB144261BC309D500D1071B /* TestState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2AB144201BBCA88600D1071B /* EventSource.swift */,
 				2AB144221BC2C5A200D1071B /* Locking.swift */,
 				2AB144241BC2DB8800D1071B /* State.swift */,
+				2AB144261BC309D500D1071B /* TestState.swift */,
 			);
 			path = SSESwift;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB144211BBCA88600D1071B /* EventSource.swift in Sources */,
+				2AB144271BC309D500D1071B /* TestState.swift in Sources */,
 				2AB144111BBCA87400D1071B /* ViewController.swift in Sources */,
 				2AB1440F1BBCA87400D1071B /* AppDelegate.swift in Sources */,
 				2AB144251BC2DB8800D1071B /* State.swift in Sources */,

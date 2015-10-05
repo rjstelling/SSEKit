@@ -14,6 +14,7 @@ protocol StateDelegate : class {
     
     func shouldTransitionFrom(from:StateType, to:StateType) -> Bool
     func didTransitionFrom(from:StateType, to:StateType)
+    func failedTransitionFrom(from:StateType, to:StateType)
 }
 
 class State<P:StateDelegate> : Locking {
@@ -25,7 +26,9 @@ class State<P:StateDelegate> : Locking {
     private var _state : P.StateType! {
         
         didSet {
-            delegate.didTransitionFrom(oldValue, to:_state)
+            synchronise {
+                self.delegate.didTransitionFrom(oldValue, to: self._state)
+            }
         }
     }
     
@@ -37,8 +40,14 @@ class State<P:StateDelegate> : Locking {
         
         set {
             synchronise {
-                    if self.delegate.shouldTransitionFrom(self._state, to:newValue) {
-                        self._state = newValue
+                if self.delegate.shouldTransitionFrom(self._state, to: newValue) {
+                    self._state = newValue
+                }
+                else {
+                    self.synchronise {
+                        self.delegate.failedTransitionFrom(self._state, to: newValue)
+                    }
+
                 }
             }
         }
@@ -50,8 +59,6 @@ class State<P:StateDelegate> : Locking {
         
         self.delegate = delegate
         
-        synchronise {
-            self._state = initialState //set the primitive to avoid calling the delegate.
-        }
+        _state = initialState //set the primitive to avoid calling the delegate.
     }
 }
