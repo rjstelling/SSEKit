@@ -11,8 +11,18 @@ import Foundation
 public typealias eventSourceError = (error: NSError) -> Void
 public typealias eventSourceMessage = (message: String) -> Void
 
-public class EventSource {
+enum ReadyState {
+    
+    case Connecting
+    case Open
+    case Closed(NSError)
+    
+}
 
+public class EventSource {
+    
+    ////
+    
     var host = "localhost"
     internal var path = "/"
     var port : Int = 8080
@@ -28,7 +38,7 @@ public class EventSource {
         print(error)
     }
     
-    private var receiveStream : NSInputStream? = nil
+    private var receiveStream : NSInputStream? = nil //These should be Implicitly Unwrapped Optionals! or not optionals?
     private var sendStream : NSOutputStream? = nil
     
     private let receiveStreamHandler = ReceiveStreamHandler()
@@ -110,6 +120,19 @@ public class EventSource {
 
 internal class ReceiveStreamHandler: NSObject, NSStreamDelegate {
     
+    var bytesRead = 0
+    var buffer : NSMutableData!
+    
+    let initialBufferSize = 4096
+    let maxReadSize = 2048
+    
+    override init() {
+        
+        super.init()
+        
+        buffer = NSMutableData(capacity: initialBufferSize)
+    }
+    
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         
         let myStream = aStream as! NSInputStream
@@ -118,28 +141,47 @@ internal class ReceiveStreamHandler: NSObject, NSStreamDelegate {
         
         switch eventCode {
             
-            case NSStreamEvent.HasBytesAvailable:
-                //print("HasBytesAvailable")
-                
-                //print("---------------- HasBytesAvailable ----------------")
-                
-                let MAX_READ_BYTES = 512
-                
-                var buffer = [UInt8](count: MAX_READ_BYTES, repeatedValue: 0)
-                let readBytes = myStream.read(&buffer, maxLength: MAX_READ_BYTES)
+        case NSStreamEvent.HasBytesAvailable:
             
-                //print("BUFFER (\(readBytes)): \(buffer)")
+            var buf = [UInt8](count: maxReadSize, repeatedValue: 0)
+            let readBytes = myStream.read(&buf, maxLength: maxReadSize)
+            buffer.appendBytes(&buf, length: readBytes)
+            bytesRead += readBytes
             
-                let data = NSData(bytes: &buffer, length: readBytes)
+//            if(bytesRead < 256) {
+//                var header = [UInt8](count: maxReadSize, repeatedValue: 0)
+//                bytesRead += myStream.read(&header, maxLength: maxReadSize)
+//            }
+//            else {
+//                //print("HasBytesAvailable")
+//                
+//                //print("---------------- HasBytesAvailable ----------------")
+//                
+//                let MAX_READ_BYTES = 4096
+//                
+//                var buffer = [UInt8](count: MAX_READ_BYTES, repeatedValue: 65)
+//                let readBytes = myStream.read(&buffer, maxLength: MAX_READ_BYTES)
+//                bytesRead += readBytes
+//                
+//                //print("BUFFER (\(readBytes)): \(buffer)")
+//            
+//                let data = NSData(bytes: &buffer, length: readBytes)
+//            
+//                let message = String(data: data, encoding: NSUTF8StringEncoding)!
+//            
+//                //print("BUFFER (\(readBytes)): \(message)")
+//                print(message)
+//                //print("HasBytesAvailable: \(NSDate().description)")
+//                //print("\(message.characters.count)----------------------------------------------------")
+//            }
             
-                let message = String(data: data, encoding: NSUTF8StringEncoding)!
-            
-                //print("BUFFER (\(readBytes)): \(message)")
-                print(message)
-            
-                //print("\(message.characters.count)----------------------------------------------------")
-            
-            default: break
+        case NSStreamEvent.EndEncountered:
+            let message = String(data: buffer, encoding: NSUTF8StringEncoding)!
+            print("EOF: \(bytesRead)----------------------------------------------------")
+            print("\(buffer)")
+            print("---------------------------------------------------------------------")
+            print("\(message)")
+        default: break
         
         }
         

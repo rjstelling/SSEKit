@@ -13,6 +13,8 @@
 		2AB144161BBCA87400D1071B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB144151BBCA87400D1071B /* Assets.xcassets */; };
 		2AB144191BBCA87400D1071B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AB144171BBCA87400D1071B /* LaunchScreen.storyboard */; };
 		2AB144211BBCA88600D1071B /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144201BBCA88600D1071B /* EventSource.swift */; settings = {ASSET_TAGS = (); }; };
+		2AB144231BC2C5A200D1071B /* Locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144221BC2C5A200D1071B /* Locking.swift */; settings = {ASSET_TAGS = (); }; };
+		2AB144251BC2DB8800D1071B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144241BC2DB8800D1071B /* State.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		2AB144181BBCA87400D1071B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AB1441A1BBCA87400D1071B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AB144201BBCA88600D1071B /* EventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
+		2AB144221BC2C5A200D1071B /* Locking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locking.swift; sourceTree = "<group>"; };
+		2AB144241BC2DB8800D1071B /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				2AB144171BBCA87400D1071B /* LaunchScreen.storyboard */,
 				2AB1441A1BBCA87400D1071B /* Info.plist */,
 				2AB144201BBCA88600D1071B /* EventSource.swift */,
+				2AB144221BC2C5A200D1071B /* Locking.swift */,
+				2AB144241BC2DB8800D1071B /* State.swift */,
 			);
 			path = SSESwift;
 			sourceTree = "<group>";
@@ -140,6 +146,8 @@
 				2AB144211BBCA88600D1071B /* EventSource.swift in Sources */,
 				2AB144111BBCA87400D1071B /* ViewController.swift in Sources */,
 				2AB1440F1BBCA87400D1071B /* AppDelegate.swift in Sources */,
+				2AB144251BC2DB8800D1071B /* State.swift in Sources */,
+				2AB144231BC2C5A200D1071B /* Locking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
