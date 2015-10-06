@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     
     //typealias StateType = TestState
     var stateMachine : State<ViewController>!
-    var stateMachineTwo : State<ViewController>!
+    //var stateMachineTwo : State<ViewController>!
     
     //var stateMachine2 : State<ViewController>! = State(StateType.Unknown, delegate: self)
 
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         super.init(coder: aDecoder)
         
         stateMachine = State(initialState: .Unknown, delegate: self)
-        stateMachineTwo = State(initialState: .Unknown, delegate: self)
+        //stateMachineTwo = State(initialState: .Unknown, delegate: self)
     }
     
     override func viewDidLoad() {
@@ -180,7 +180,7 @@ class ViewController: UIViewController {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(UInt64(secondsToWait) * NSEC_PER_SEC)), self.queueTwo) {
                 let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
                 self.stateMachine.state = randonState!
-                self.stateMachineTwo.state = randonState!
+                //self.stateMachineTwo.state = randonState!
 
             }
         }
