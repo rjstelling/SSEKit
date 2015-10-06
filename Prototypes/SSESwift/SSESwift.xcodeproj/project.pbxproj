@@ -13,10 +13,20 @@
 		2AB144161BBCA87400D1071B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB144151BBCA87400D1071B /* Assets.xcassets */; };
 		2AB144191BBCA87400D1071B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AB144171BBCA87400D1071B /* LaunchScreen.storyboard */; };
 		2AB144211BBCA88600D1071B /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144201BBCA88600D1071B /* EventSource.swift */; settings = {ASSET_TAGS = (); }; };
-		2AB144231BC2C5A200D1071B /* Locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144221BC2C5A200D1071B /* Locking.swift */; settings = {ASSET_TAGS = (); }; };
 		2AB144251BC2DB8800D1071B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144241BC2DB8800D1071B /* State.swift */; settings = {ASSET_TAGS = (); }; };
 		2AB144271BC309D500D1071B /* TestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB144261BC309D500D1071B /* TestState.swift */; settings = {ASSET_TAGS = (); }; };
+		2AB1442F1BC3CA7400D1071B /* SSESwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1442E1BC3CA7400D1071B /* SSESwiftTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2AB144311BC3CA7400D1071B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AB144031BBCA87400D1071B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AB1440A1BBCA87400D1071B;
+			remoteInfo = SSESwift;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2AB1440B1BBCA87400D1071B /* SSESwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSESwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,13 +37,22 @@
 		2AB144181BBCA87400D1071B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AB1441A1BBCA87400D1071B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AB144201BBCA88600D1071B /* EventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
-		2AB144221BC2C5A200D1071B /* Locking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locking.swift; sourceTree = "<group>"; };
 		2AB144241BC2DB8800D1071B /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		2AB144261BC309D500D1071B /* TestState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestState.swift; sourceTree = "<group>"; };
+		2AB1442C1BC3CA7400D1071B /* SSESwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSESwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AB1442E1BC3CA7400D1071B /* SSESwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSESwiftTests.swift; sourceTree = "<group>"; };
+		2AB144301BC3CA7400D1071B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2AB144081BBCA87400D1071B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AB144291BC3CA7400D1071B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB1440D1BBCA87400D1071B /* SSESwift */,
+				2AB1442D1BC3CA7400D1071B /* SSESwiftTests */,
 				2AB1440C1BBCA87400D1071B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB1440B1BBCA87400D1071B /* SSESwift.app */,
+				2AB1442C1BC3CA7400D1071B /* SSESwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,11 +90,19 @@
 				2AB144171BBCA87400D1071B /* LaunchScreen.storyboard */,
 				2AB1441A1BBCA87400D1071B /* Info.plist */,
 				2AB144201BBCA88600D1071B /* EventSource.swift */,
-				2AB144221BC2C5A200D1071B /* Locking.swift */,
 				2AB144241BC2DB8800D1071B /* State.swift */,
 				2AB144261BC309D500D1071B /* TestState.swift */,
 			);
 			path = SSESwift;
+			sourceTree = "<group>";
+		};
+		2AB1442D1BC3CA7400D1071B /* SSESwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AB1442E1BC3CA7400D1071B /* SSESwiftTests.swift */,
+				2AB144301BC3CA7400D1071B /* Info.plist */,
+			);
+			path = SSESwiftTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +125,24 @@
 			productReference = 2AB1440B1BBCA87400D1071B /* SSESwift.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2AB1442B1BC3CA7400D1071B /* SSESwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AB144331BC3CA7400D1071B /* Build configuration list for PBXNativeTarget "SSESwiftTests" */;
+			buildPhases = (
+				2AB144281BC3CA7400D1071B /* Sources */,
+				2AB144291BC3CA7400D1071B /* Frameworks */,
+				2AB1442A1BC3CA7400D1071B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AB144321BC3CA7400D1071B /* PBXTargetDependency */,
+			);
+			name = SSESwiftTests;
+			productName = SSESwiftTests;
+			productReference = 2AB1442C1BC3CA7400D1071B /* SSESwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +154,10 @@
 				TargetAttributes = {
 					2AB1440A1BBCA87400D1071B = {
 						CreatedOnToolsVersion = 7.0.1;
+					};
+					2AB1442B1BC3CA7400D1071B = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 2AB1440A1BBCA87400D1071B;
 					};
 				};
 			};
@@ -124,6 +175,7 @@
 			projectRoot = "";
 			targets = (
 				2AB1440A1BBCA87400D1071B /* SSESwift */,
+				2AB1442B1BC3CA7400D1071B /* SSESwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -139,6 +191,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AB1442A1BC3CA7400D1071B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -151,11 +210,26 @@
 				2AB144111BBCA87400D1071B /* ViewController.swift in Sources */,
 				2AB1440F1BBCA87400D1071B /* AppDelegate.swift in Sources */,
 				2AB144251BC2DB8800D1071B /* State.swift in Sources */,
-				2AB144231BC2C5A200D1071B /* Locking.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AB144281BC3CA7400D1071B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AB1442F1BC3CA7400D1071B /* SSESwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2AB144321BC3CA7400D1071B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AB1440A1BBCA87400D1071B /* SSESwift */;
+			targetProxy = 2AB144311BC3CA7400D1071B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2AB144121BBCA87400D1071B /* Main.storyboard */ = {
@@ -282,6 +356,30 @@
 			};
 			name = Release;
 		};
+		2AB144341BC3CA7400D1071B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SSESwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.naim.SSESwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSESwift.app/SSESwift";
+			};
+			name = Debug;
+		};
+		2AB144351BC3CA7400D1071B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SSESwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.naim.SSESwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSESwift.app/SSESwift";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -299,6 +397,14 @@
 			buildConfigurations = (
 				2AB1441E1BBCA87400D1071B /* Debug */,
 				2AB1441F1BBCA87400D1071B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2AB144331BC3CA7400D1071B /* Build configuration list for PBXNativeTarget "SSESwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AB144341BC3CA7400D1071B /* Debug */,
+				2AB144351BC3CA7400D1071B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

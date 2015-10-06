@@ -17,18 +17,26 @@ protocol StateDelegate : class {
     func failedTransitionFrom(from:StateType, to:StateType)
 }
 
-class State<P:StateDelegate> : Locking {
+class State<P:StateDelegate> {
     
     private unowned let delegate:P
+    
+    // MARK: Locking
+
+    let lockingQueueName : String = "State.Locking.queue"
+    
+    let queue : dispatch_queue_t
+    
+    private func synchronise(f: Void -> Void) {
+        dispatch_sync(queue, f)
+    }
     
     // MARK: Getting and Setting State
     
     private var _state : P.StateType! {
         
         didSet {
-            synchronise {
-                self.delegate.didTransitionFrom(oldValue, to: self._state)
-            }
+            self.delegate.didTransitionFrom(oldValue, to: self._state)
         }
     }
     
@@ -39,15 +47,14 @@ class State<P:StateDelegate> : Locking {
         }
         
         set {
-            synchronise {
-                if self.delegate.shouldTransitionFrom(self._state, to: newValue) {
+            if self.delegate.shouldTransitionFrom(self._state, to: newValue) {
+                self.synchronise {
                     self._state = newValue
                 }
-                else {
-                    self.synchronise {
-                        self.delegate.failedTransitionFrom(self._state, to: newValue)
-                    }
-
+            }
+            else {
+                self.synchronise {
+                    self.delegate.failedTransitionFrom(self._state, to: newValue)
                 }
             }
         }
@@ -58,7 +65,8 @@ class State<P:StateDelegate> : Locking {
     init(initialState:P.StateType, delegate:P) {
         
         self.delegate = delegate
-        
         _state = initialState //set the primitive to avoid calling the delegate.
+        
+        self.queue = dispatch_queue_create(lockingQueueName, nil)
     }
 }

@@ -8,8 +8,12 @@
 
 import Foundation
 
+var spawnCount = 0
+var token : dispatch_once_t = 0
+var queue_ : dispatch_queue_t!
+
 protocol Locking : class {
-    
+
     var lockingQueueName : String { get }
     
     func synchronise(f: Void -> Void)
@@ -20,9 +24,8 @@ extension Locking {
     var lockingQueueName : String {
         
         get {
-            
             var myObjectName = _stdlib_getDemangledTypeName(self).lowercaseString
-            myObjectName.appendContentsOf(".queue")
+            myObjectName.appendContentsOf("[\(spawnCount)].queue")
             return myObjectName
         }
     }
@@ -30,7 +33,13 @@ extension Locking {
     private var queue : dispatch_queue_t? {
         
         get {
-            return dispatch_queue_create(lockingQueueName, nil)
+    
+            dispatch_once(&token) {
+                spawnCount++
+                queue_ = dispatch_queue_create(self.lockingQueueName, nil)
+            }
+        
+            return queue_
         }
     }
     

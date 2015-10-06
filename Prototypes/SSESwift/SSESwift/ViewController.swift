@@ -46,7 +46,7 @@ extension ViewController : StateDelegate {
     }
     
     func didTransitionFrom(from:StateType, to:StateType) {
-        print("\(from) -> \(to)")
+        print("[\(stateMachine.lockingQueueName)] \(from) -> \(to)")
         
         if(to == .End)
         {
@@ -55,16 +55,17 @@ extension ViewController : StateDelegate {
     }
     
     func failedTransitionFrom(from:StateType, to:StateType) {
-        print("FAILED!")
+        print("[\(stateMachine.lockingQueueName)] FAILED!")
     }
 }
 
-class ViewController: UIViewController, Locking {
+class ViewController: UIViewController {
     
     //typealias StateType = TestState
     var stateMachine : State<ViewController>!
+    var stateMachineTwo : State<ViewController>!
     
-    //= State(initialState: StateType.Unknown, delegate: self as! StateDelegate)
+    //var stateMachine2 : State<ViewController>! = State(StateType.Unknown, delegate: self)
 
     //var eventSource : EventSource? = EventSource(path: "/sse")
     //var eventSource : EventSource? = EventSource(host: "192.168.103.100", path: "/test.php", port: 80)
@@ -76,38 +77,20 @@ class ViewController: UIViewController, Locking {
     var queueTwo = dispatch_queue_create("Q2", nil)
     var queueThree = dispatch_queue_create("Q3", nil)
     
-    let MAX = 100
+    let MAX = 10000
     
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         
-       stateMachine = State(initialState: .Unknown, delegate: self)
+        stateMachine = State(initialState: .Unknown, delegate: self)
+        stateMachineTwo = State(initialState: .Unknown, delegate: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dispatch_sync(self.queueOne) {
-            for var i = 0; i < self.MAX; i++ {
-                let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
-                self.stateMachine.state = randonState!
-            }
-        }
 
-        dispatch_sync(self.queueTwo) {
-            for var j = 0; j < self.MAX; j++ {
-                let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
-                self.stateMachine.state = randonState!
-            }
-        }
-
-        dispatch_sync(self.queueThree) {
-            for var k = 0; k < self.MAX; k++ {
-                let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
-                self.stateMachine.state = randonState!
-            }
-        }
 
         
         
@@ -181,5 +164,32 @@ class ViewController: UIViewController, Locking {
     
     func onEnd() {
         print("***********************************")
+    }
+    @IBAction func onTest(sender: UIButton) {
+//        dispatch_async(self.queueOne) {
+//            for var i = 0; i < self.MAX; i++ {
+//                let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
+//                self.stateMachine.state = randonState!
+//            }
+//        }
+        
+        for var j = 0; j < self.MAX; j++ {
+            
+            let secondsToWait = Int(arc4random_uniform(10))
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(UInt64(secondsToWait) * NSEC_PER_SEC)), self.queueTwo) {
+                let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
+                self.stateMachine.state = randonState!
+                self.stateMachineTwo.state = randonState!
+
+            }
+        }
+        
+//        dispatch_async(self.queueThree) {
+//            for var k = 0; k < self.MAX; k++ {
+//                let randonState = TestState(rawValue: Int(arc4random_uniform(5)))
+//                self.stateMachine.state = randonState!
+//            }
+//        }
     }
 }
