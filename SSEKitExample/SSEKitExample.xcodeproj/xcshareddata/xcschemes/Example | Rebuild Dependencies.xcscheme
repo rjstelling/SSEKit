@@ -20,6 +20,34 @@
                ReferencedContainer = "container:SSEKitExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2AB9E41D1BC573220074F9EA"
+               BuildableName = "SSEKit.framework"
+               BlueprintName = "SSEKit"
+               ReferencedContainer = "container:../Projects/SSEKit/SSEKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2AB1443F1BC4090C00D1071B"
+               BuildableName = "State.framework"
+               BlueprintName = "State"
+               ReferencedContainer = "container:../Carthage/Checkouts/State/State/State.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
