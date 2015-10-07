@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import State
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, StateDelegate {
 
+    enum ExampleState {
+        case Initial
+    }
+    
+    typealias StateType = ExampleState
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let stateMachine = State<ViewController>(initialState:.Initial, delegate:self)
+        
+        print("State: \(stateMachine.state)")
+        print("State Machine version: \(stateMachine.version)")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +32,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    // MARK: StateDelegate
+    
+    func shouldTransitionFrom(from:StateType, to:StateType) -> Bool {
+        return true
+    }
+    
+    func didTransitionFrom(from:StateType, to:StateType) {
+        
+    }
+    
+    func failedTransitionFrom(from:StateType, to:StateType) {
+        
+    }
 }
 

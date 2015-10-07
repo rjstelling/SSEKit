@@ -73,6 +73,7 @@
 			buildPhases = (
 				2A8DDEED1BC57FD900F67071 /* Sources */,
 				2A8DDEEE1BC57FD900F67071 /* Frameworks */,
+				2A8DDF061BC585AA00F67071 /* Carthage */,
 				2A8DDEEF1BC57FD900F67071 /* Resources */,
 			);
 			buildRules = (
@@ -128,6 +129,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A8DDF061BC585AA00F67071 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage build --verbose --platform \"$PLATFORM_NAME\" \"$SRCROOT/../\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A8DDEED1BC57FD900F67071 /* Sources */ = {
