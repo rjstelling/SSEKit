@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SSEKitExample/SSEKitExample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Projects/SSEKit/SSEKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/State/State/State.xcodeproj">
    </FileRef>
 </Workspace>

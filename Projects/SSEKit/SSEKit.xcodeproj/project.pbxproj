@@ -10,6 +10,7 @@
 		2AB9E4221BC573220074F9EA /* SSEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AB9E4211BC573220074F9EA /* SSEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AB9E4291BC573220074F9EA /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB9E41E1BC573220074F9EA /* SSEKit.framework */; settings = {ASSET_TAGS = (); }; };
 		2AB9E42E1BC573220074F9EA /* SSEKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9E42D1BC573220074F9EA /* SSEKitTests.swift */; };
+		2AB9E43A1BC57CE80074F9EA /* State.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB9E4391BC57CE80074F9EA /* State.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		2AB9E4281BC573220074F9EA /* SSEKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSEKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB9E42D1BC573220074F9EA /* SSEKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSEKitTests.swift; sourceTree = "<group>"; };
 		2AB9E42F1BC573220074F9EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AB9E4391BC57CE80074F9EA /* State.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = State.framework; path = ../../Carthage/Build/iOS/State.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB9E43A1BC57CE80074F9EA /* State.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +58,7 @@
 			children = (
 				2AB9E4201BC573220074F9EA /* SSEKit */,
 				2AB9E42C1BC573220074F9EA /* SSEKitTests */,
+				2AB9E43B1BC57CF00074F9EA /* Frameworks */,
 				2AB9E41F1BC573220074F9EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +88,14 @@
 				2AB9E42F1BC573220074F9EA /* Info.plist */,
 			);
 			path = SSEKitTests;
+			sourceTree = "<group>";
+		};
+		2AB9E43B1BC57CF00074F9EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2AB9E4391BC57CE80074F9EA /* State.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +214,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "#/usr/local/bin/carthage build --verbose --platform \"$PLATFORM_NAME\" \"$SRCROOT/../../\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -329,6 +341,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../Carthage/Build/iOS/\"";
 				INFOPLIST_FILE = SSEKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -345,6 +358,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../Carthage/Build/iOS/\"";
 				INFOPLIST_FILE = SSEKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
