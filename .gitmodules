@@ -1,3 +1,0 @@
-[submodule "Carthage/Checkouts/State"]
-	path = Carthage/Checkouts/State
-	url = ssh://git@ajatar.empiricalmagic.com:30001/Modules/State.git
