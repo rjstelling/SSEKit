@@ -7,8 +7,26 @@
 //
 
 import UIKit
-import State
+import SSEKit
 
+class ViewController: UIViewController {
+
+    let sse = EventSource(host: "lamp.private", path: "/sse.php")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+            
+        print("SSEKit version: \(sse.versionString)")
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+}
+/*
 class ViewController: UIViewController, StateDelegate {
 
     enum ExampleState {
@@ -47,3 +65,4 @@ class ViewController: UIViewController, StateDelegate {
     }
 }
 
+*/

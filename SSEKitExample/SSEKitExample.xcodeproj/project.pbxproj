@@ -12,6 +12,7 @@
 		2A8DDEFA1BC57FD900F67071 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8DDEF81BC57FD900F67071 /* Main.storyboard */; };
 		2A8DDEFC1BC57FD900F67071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8DDEFB1BC57FD900F67071 /* Assets.xcassets */; };
 		2A8DDEFF1BC57FD900F67071 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8DDEFD1BC57FD900F67071 /* LaunchScreen.storyboard */; };
+		2AE43ED91BC7B63B004CEB93 /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE43ED81BC7B63B004CEB93 /* SSEKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2A8DDEFB1BC57FD900F67071 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A8DDEFE1BC57FD900F67071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A8DDF001BC57FD900F67071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AE43ED81BC7B63B004CEB93 /* SSEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSEKit.framework; path = "../Projects/SSEKit/build/Debug-iphoneos/SSEKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE43ED91BC7B63B004CEB93 /* SSEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				2A8DDEF31BC57FD900F67071 /* SSEKitExample */,
+				2AE43EDA1BC7B642004CEB93 /* Frameworks */,
 				2A8DDEF21BC57FD900F67071 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +66,14 @@
 				2A8DDF001BC57FD900F67071 /* Info.plist */,
 			);
 			path = SSEKitExample;
+			sourceTree = "<group>";
+		};
+		2AE43EDA1BC7B642004CEB93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2AE43ED81BC7B63B004CEB93 /* SSEKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +155,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage build --verbose --platform \"$PLATFORM_NAME\" \"$SRCROOT/../\"";
+			shellScript = "#/usr/local/bin/carthage build --verbose --platform \"$PLATFORM_NAME\" \"$SRCROOT/../\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -303,6 +315,7 @@
 				2A8DDF051BC57FD900F67071 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

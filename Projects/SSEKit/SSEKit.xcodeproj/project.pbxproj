@@ -11,6 +11,10 @@
 		2AB9E4291BC573220074F9EA /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB9E41E1BC573220074F9EA /* SSEKit.framework */; settings = {ASSET_TAGS = (); }; };
 		2AB9E42E1BC573220074F9EA /* SSEKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9E42D1BC573220074F9EA /* SSEKitTests.swift */; };
 		2AB9E43A1BC57CE80074F9EA /* State.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB9E4391BC57CE80074F9EA /* State.framework */; };
+		2AE43ED71BC7B5A4004CEB93 /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE43ED61BC7B5A4004CEB93 /* EventSource.swift */; settings = {ASSET_TAGS = (); }; };
+		2AE43EDC1BCBC66C004CEB93 /* ReceiveStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE43EDB1BCBC66C004CEB93 /* ReceiveStreamHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		2AE43EDE1BCBC6E2004CEB93 /* SendStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE43EDD1BCBC6E2004CEB93 /* SendStreamHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		2AE43EE01BCBDE76004CEB93 /* StreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE43EDF1BCBDE76004CEB93 /* StreamHandler.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,10 @@
 		2AB9E42D1BC573220074F9EA /* SSEKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSEKitTests.swift; sourceTree = "<group>"; };
 		2AB9E42F1BC573220074F9EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AB9E4391BC57CE80074F9EA /* State.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = State.framework; path = ../../Carthage/Build/iOS/State.framework; sourceTree = "<group>"; };
+		2AE43ED61BC7B5A4004CEB93 /* EventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
+		2AE43EDB1BCBC66C004CEB93 /* ReceiveStreamHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveStreamHandler.swift; sourceTree = "<group>"; };
+		2AE43EDD1BCBC6E2004CEB93 /* SendStreamHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendStreamHandler.swift; sourceTree = "<group>"; };
+		2AE43EDF1BCBDE76004CEB93 /* StreamHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,8 @@
 			children = (
 				2AB9E4211BC573220074F9EA /* SSEKit.h */,
 				2AB9E4231BC573220074F9EA /* Info.plist */,
+				2AE43ED61BC7B5A4004CEB93 /* EventSource.swift */,
+				2AE43EE11BCBDE7F004CEB93 /* Stream Handling */,
 			);
 			path = SSEKit;
 			sourceTree = "<group>";
@@ -96,6 +106,16 @@
 				2AB9E4391BC57CE80074F9EA /* State.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2AE43EE11BCBDE7F004CEB93 /* Stream Handling */ = {
+			isa = PBXGroup;
+			children = (
+				2AE43EDF1BCBDE76004CEB93 /* StreamHandler.swift */,
+				2AE43EDD1BCBC6E2004CEB93 /* SendStreamHandler.swift */,
+				2AE43EDB1BCBC66C004CEB93 /* ReceiveStreamHandler.swift */,
+			);
+			name = "Stream Handling";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +175,7 @@
 		2AB9E4151BC573220074F9EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Naim Audio Ltd";
 				TargetAttributes = {
@@ -214,7 +235,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/usr/local/bin/carthage build --verbose --platform \"$PLATFORM_NAME\" \"$SRCROOT/../../\"";
+			shellScript = "/usr/local/bin/carthage build --verbose --platform \"$PLATFORM_NAME\" \"$SRCROOT/../../\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -223,6 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE43EE01BCBDE76004CEB93 /* StreamHandler.swift in Sources */,
+				2AE43EDC1BCBC66C004CEB93 /* ReceiveStreamHandler.swift in Sources */,
+				2AE43ED71BC7B5A4004CEB93 /* EventSource.swift in Sources */,
+				2AE43EDE1BCBC6E2004CEB93 /* SendStreamHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +362,7 @@
 		2AB9E4331BC573220074F9EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -348,12 +374,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.naim.modules.SSEKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2AB9E4341BC573220074F9EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -407,6 +435,7 @@
 				2AB9E4341BC573220074F9EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2AB9E4351BC573220074F9EA /* Build configuration list for PBXNativeTarget "SSEKitTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +444,7 @@
 				2AB9E4371BC573220074F9EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
