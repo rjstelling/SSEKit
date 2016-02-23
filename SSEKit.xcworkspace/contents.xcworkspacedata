@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:SSEKitExample/SSEKitExample.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Projects/SSEKit/SSEKit.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/State/State/State.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "Playgrounds">
+      <FileRef
+         location = "group:Playgrounds/SSEKit Playground.playground">
+      </FileRef>
+      <FileRef
+         location = "group:Playgrounds/State Tests Playground.playground">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Frameworks">
+      <FileRef
+         location = "group:Carthage/Checkouts/State/State/State.xcodeproj">
+      </FileRef>
+   </Group>
 </Workspace>

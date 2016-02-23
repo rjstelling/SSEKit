@@ -1,2 +1,2 @@
 # State, get the latest version of State
-git "ssh://git@ajatar.empiricalmagic.com:30001/Modules/State.git"
+git "https://github.com/rjstelling/State.git"

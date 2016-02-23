@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=59&amp;CharacterRangeLoc=7457&amp;EndingColumnNumber=55&amp;EndingLineNumber=205&amp;StartingColumnNumber=13&amp;StartingLineNumber=205&amp;Timestamp=466698450.277906"
+         lockedSize = "{388, 279}"
+         selectedRepresentationIndex = "2"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=0&amp;CharacterRangeLoc=7266&amp;EndingColumnNumber=21&amp;EndingLineNumber=204&amp;StartingColumnNumber=13&amp;StartingLineNumber=204&amp;Timestamp=466698450.278115"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=1&amp;CharacterRangeLoc=7109&amp;EndingColumnNumber=26&amp;EndingLineNumber=198&amp;StartingColumnNumber=13&amp;StartingLineNumber=198&amp;Timestamp=466698450.278218"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=1&amp;CharacterRangeLoc=4366&amp;EndingColumnNumber=41&amp;EndingLineNumber=130&amp;StartingColumnNumber=9&amp;StartingLineNumber=130&amp;Timestamp=466698450.278313"
+         selectedRepresentationIndex = "2"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=21&amp;CharacterRangeLoc=7113&amp;EndingColumnNumber=34&amp;EndingLineNumber=198&amp;StartingColumnNumber=13&amp;StartingLineNumber=198&amp;Timestamp=466698451.645553"
+         lockedSize = "{1703, 359}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "YES">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>

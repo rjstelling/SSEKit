@@ -13,6 +13,7 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
     
     var totalBytesRead = 0
     var buffer : NSMutableData!
+    var drainingBuffer = false
     
     let initialBufferSize = 4096
     let maxReadSize = 512 //2048
@@ -36,16 +37,21 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
         super.init(delegate: delegate)
     }
     
+    private let queue : dispatch_queue_t! = dispatch_queue_create("receive-stream.queue", DISPATCH_QUEUE_SERIAL)
+    private func synchronise(f: Void -> Void) {
+        dispatch_sync(queue, f)
+    }
+    
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         
         let myStream = aStream as! NSInputStream
         
-        if eventCode == NSStreamEvent.HasBytesAvailable {
-            let bytesRead = readBuffer(myStream, readSize: maxReadSize)
-            totalBytesRead += bytesRead
-            
-            self.delegate.bytesReceived(bytesRead) //TODO: move to background queue?
-        }
+//        if eventCode == NSStreamEvent.HasBytesAvailable {
+//            let bytesRead = readBuffer(myStream, readSize: maxReadSize)
+//            totalBytesRead += bytesRead
+//            
+//            self.delegate.bytesReceived(bytesRead) //TODO: move to background queue?
+//        }
         
         switch(eventCode, stateMachine.state) {
         
@@ -53,16 +59,29 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
             self.stateMachine.state = .HeaderParsing
             break
             
-        case(NSStreamEvent.HasBytesAvailable, .HeaderParsing):
+        case(NSStreamEvent.HasBytesAvailable, _):
             
-            let workingData = buffer.copy() as! NSData
+            let bytesRead = readBuffer(myStream, readSize: maxReadSize)
+            totalBytesRead += bytesRead
             
-            let operation = NSBlockOperation {
-                
-                self.scanData(workingData, block: { (data) in
-                    self.parseHeaderData(data)
-                })
-                
+            synchronise {
+                print("Buffer size: \(self.buffer.length)")
+            }
+            
+            drainBuffer()
+            
+            break
+            
+//        case(NSStreamEvent.HasBytesAvailable, .HeaderParsing):
+            
+//            let workingData = buffer.copy() as! NSData
+//            
+//            let operation = NSBlockOperation {
+//                
+//                self.scanData(workingData, block: { (data) in
+//                    self.parseHeaderData(data)
+//                })
+//-----------------------------------------------------------------------------------//
 //                var workingRange = NSMakeRange(self.workingLocation, 0)
 //                var sequenceRange : NSRange = NSMakeRange(NSNotFound, 0)
 //                
@@ -87,24 +106,25 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
 //                    //3. Process headers
 //                    self.parseHeaderData(headerData)
 //                }
-            }
+//            }
+//            
+//            operationQueue.addOperations([operation], waitUntilFinished: true)
+//            
+//            break
             
-            operationQueue.addOperations([operation], waitUntilFinished: true)
+//        case(NSStreamEvent.HasBytesAvailable, .MessageParsing):
             
-            break
-            
-        case(NSStreamEvent.HasBytesAvailable, .MessageParsing):
-            
-            let workingData = buffer.copy() as! NSData
-            
-            let operation = NSBlockOperation {
-                
-                self.scanData(workingData, block: { (data) in
-                    self.parseMessageData(data)
-                })
-            }
-            
-            operationQueue.addOperations([operation], waitUntilFinished: true)
+//            let workingData = buffer.copy() as! NSData
+//            
+//            let operation = NSBlockOperation {
+//                
+//                self.scanData(workingData, block: { (data) in
+//                    self.parseMessageData(data)
+//                })
+//            }
+//            
+//            operationQueue.addOperations([operation], waitUntilFinished: true)
+            //-----------------------------------------------------------------------------------//
             
 //            let bytesRead = readBuffer(myStream, readSize: maxReadSize)
 //            totalBytesRead += bytesRead
@@ -128,12 +148,12 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
 //            }
 //            
 //            operationQueue.addOperations([operation], waitUntilFinished: true)
-            
-            break
+//            
+//            break
             
         case(NSStreamEvent.EndEncountered, _):
-            let message = String(data: self.buffer, encoding: NSUTF8StringEncoding)!
-            print("*********************\n\(message)\n*********************")
+//            let message = String(data: self.buffer, encoding: NSUTF8StringEncoding)!
+//            print("*********************\n\(message)\n*********************")
             connectionEnded()
             break
             
@@ -145,13 +165,15 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
     func readBuffer(stream: NSInputStream, readSize: Int) -> Int {
         var buf = [UInt8](count: readSize, repeatedValue: 0)
         let readBytes = stream.read(&buf, maxLength: readSize)
-        buffer.appendBytes(&buf, length: readBytes)
-        //bytesRead += readBytes
+        
+        synchronise {
+            self.buffer.appendBytes(&buf, length: readBytes)
+        }
         
         return readBytes
     }
     
-    func scanData(workingData: NSData, block: (data: NSData) -> Void) {
+    func scanData2(workingData: NSData, block: (data: NSData) -> Void) {
         
         var workingRange = NSMakeRange(self.workingLocation, 0)
         var sequenceRange : NSRange = NSMakeRange(NSNotFound, 0)
@@ -235,7 +257,7 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
     
     func connectionEnded() {
         
-        drainBuffer()
+       // drainBuffer()
         
         self.stateMachine.state = .ConnectionClosed
         
@@ -244,18 +266,98 @@ internal class ReceiveStreamHandler : StreamHandler, StateDelegate, NSStreamDele
     
     func drainBuffer() {
         
-        print("// +*+*+*+*+ //")
+        drainingBuffer = true
         
-        if workingLocation < buffer.length {
+        synchronise {
+            print("Buffer size: \(self.buffer.length)")
+        }
+        
+        scanData { (data) -> Void in
             
-            scanData(buffer, block: { (data) -> Void in
-                self.parseMessageData(data)
-                
-                self.drainBuffer()
-            })
+            self.drainBuffer()
+            
+            print("Sequence length: \(data.length)")
+            let message = String(data: data, encoding: NSUTF8StringEncoding)!
+            print("Message: \(message)")
+            //self.drainBuffer()
             
         }
+        
     }
+    
+    var scanning = false
+    
+    func scanData(block: (data: NSData) -> Void) {
+        
+        if(scanning) {
+            return
+        }
+        
+        
+        scanning = true
+        
+        var workingData : NSData? = nil
+        
+        synchronise {
+            workingData = self.buffer.copy() as? NSData
+        }
+        
+        var workingRange = NSMakeRange(0, 0)
+        var sequenceRange : NSRange = NSMakeRange(NSNotFound, 0)
+        
+        repeat {
+            workingRange.length += 32 //TODO: is this optimum for headers?
+            
+            if NSMaxRange(workingRange) > workingData!.length {
+                sequenceRange = NSMakeRange(NSNotFound, 0)
+                break
+            }
+            sequenceRange = workingData!.rangeOfData(self.HTTPBlankLine, options: NSDataSearchOptions(rawValue: 0), range:workingRange)
+        } while NSEqualRanges(sequenceRange, NSMakeRange(NSNotFound, 0))
+        
+        if(!NSEqualRanges(sequenceRange, NSMakeRange(NSNotFound, 0))) { //if we have a valid range for all headers
+            
+            //1. Copy the header data for processing later
+            let dataRange = NSMakeRange(0, NSMaxRange(sequenceRange))
+            print("dataRange: \(dataRange)")
+            let data = workingData!.subdataWithRange(dataRange)
+            
+            //2. 
+            synchronise {
+                let range = NSMakeRange(NSMaxRange(dataRange), self.buffer.length - NSMaxRange(dataRange))
+                let remainingBuffer = self.buffer.subdataWithRange(range)
+                self.buffer = remainingBuffer.mutableCopy() as? NSMutableData
+            }
+            
+            //3. Pass data back to block
+            block(data: data)
+            //self.parseHeaderData(headerData)
+        }
+        else {
+            print("Working Range: \(workingRange)")
+            print("SEQ Range: \(sequenceRange)")
+            
+            drainingBuffer = false
+        }
+        
+        scanning = false
+        
+    }
+    
+//    func drainBuffer() {
+//        
+//        print("// +*+*+*+*+ //")
+//        
+//        if workingLocation < buffer.length {
+//            
+//            scanData(buffer, block: { (data) -> Void in
+//                self.parseMessageData(data)
+//                
+//                self.drainBuffer()
+//            })
+//            
+//        }
+//    }
     
     // MARK: StateDelegate
     

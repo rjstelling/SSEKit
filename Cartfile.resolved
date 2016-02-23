@@ -1,1 +1,1 @@
-git "ssh://git@ajatar.empiricalmagic.com:30001/Modules/State.git" "0.0.0.2"
+git "https://github.com/rjstelling/State.git" "0.0.0.5"
