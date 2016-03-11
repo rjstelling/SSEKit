@@ -3,7 +3,7 @@
 //  SSEKitTests
 //
 //  Created by Richard Stelling on 23/02/2016.
-//  Copyright © 2016 Naim Audio Ltd. All rights reserved.
+//  Copyright © 2016 Richard Stelling All rights reserved.
 //
 
 import XCTest

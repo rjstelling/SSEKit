@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A18FBC41C7CB8A80052DFCE /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC31C7CB8A80052DFCE /* EventSource.swift */; };
+		2A18FBC61C7CB8C40052DFCE /* EventSourceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */; };
+		2A18FBC81C7CB8EF0052DFCE /* SSEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */; };
+		2A6C696D1C90789A0064CD84 /* EventParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */; };
 		2AA0D2341C7C9A3B006E83D0 /* SSEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AA0D23B1C7C9A3B006E83D0 /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */; };
 		2AA0D2401C7C9A3B006E83D0 /* SSEKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0D23F1C7C9A3B006E83D0 /* SSEKitTests.swift */; };
@@ -23,6 +27,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A18FBC31C7CB8A80052DFCE /* EventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
+		2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSourceConfiguration.swift; sourceTree = "<group>"; };
+		2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSEManager.swift; sourceTree = "<group>"; };
+		2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParseOperation.swift; sourceTree = "<group>"; };
 		2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSEKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSEKit.h; sourceTree = "<group>"; };
 		2AA0D2351C7C9A3B006E83D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +81,10 @@
 			children = (
 				2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */,
 				2AA0D2351C7C9A3B006E83D0 /* Info.plist */,
+				2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */,
+				2A18FBC31C7CB8A80052DFCE /* EventSource.swift */,
+				2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */,
+				2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */,
 			);
 			path = SSEKit;
 			sourceTree = "<group>";
@@ -194,6 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A18FBC61C7CB8C40052DFCE /* EventSourceConfiguration.swift in Sources */,
+				2A18FBC81C7CB8EF0052DFCE /* SSEManager.swift in Sources */,
+				2A6C696D1C90789A0064CD84 /* EventParseOperation.swift in Sources */,
+				2A18FBC41C7CB8A80052DFCE /* EventSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,28 +326,33 @@
 		2AA0D2451C7C9A3B006E83D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SSEKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.SSEKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2AA0D2461C7C9A3B006E83D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SSEKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.SSEKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -343,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = SSEKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.SSEKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = SSEKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.SSEKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,6 +401,7 @@
 				2AA0D2461C7C9A3B006E83D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2AA0D2471C7C9A3B006E83D0 /* Build configuration list for PBXNativeTarget "SSEKitTests" */ = {
 			isa = XCConfigurationList;
@@ -386,6 +410,7 @@
 				2AA0D2491C7C9A3B006E83D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
