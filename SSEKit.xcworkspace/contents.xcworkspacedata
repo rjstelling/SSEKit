@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Projects/SSEKitExample/SSEKitExample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Projects/SSEKit/SSEKit.xcodeproj">
    </FileRef>
    <Group
