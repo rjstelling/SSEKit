@@ -118,6 +118,9 @@ public class EventSource: NSObject {
         urlComponents.scheme = "http" //FIXME: This should be settable in config
         
         if let url = urlComponents.URL {
+            
+            print("URL: \(url)")
+            
 //            if #available(Swift 2.2) {
 //                //self.connectionTimer = NSTimer.scheduledTimerWithTimeInterval(self.configuration.timeout, target: self, selector: #selector(onConnectionTimeout(_:)), userInfo: nil, repeats: false)
 //            }
@@ -135,6 +138,11 @@ public class EventSource: NSObject {
     }
     
     func disconnect() {
+        
+        guard let t = self.task where t.state != .Canceling else {
+            
+            return
+        }
         
         delegate?.eventSourceWillDisconnect(self)
         
