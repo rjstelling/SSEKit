@@ -25,46 +25,17 @@ public extension SSEManager {
             case Name
             case Data
             case Timestamp
-            
-            
         }
     }
 }
 
+// MARK: - SSEManager
 public class SSEManager {
-    
-//    public enum Notification: String {
-//        
-//        case Connected
-//        case Event
-//        case Disconnected
-//        
-//        public enum Key: String {
-//            
-//            // Event
-//            case Source
-//            case Identifier
-//            case Name
-//            case Data
-//            case Timestamp
-//            
-//            
-//        }
-//    }
     
     private var eventSources: [EventSource] = []
     
-    // Manager Info
+    public init(sources: [EventSourceConfiguration]) {
     
-    
-    internal init() {
-        
-    }
-    
-    public convenience init(sources: [EventSourceConfiguration]) {
-    
-        self.init()
-        
         for config in sources {
             addEventSource(config)
         }
@@ -73,17 +44,19 @@ public class SSEManager {
     /**
      Add an EventSource to the manager
      */
-    func addEventSource(eventSourceConfig: EventSourceConfiguration) {
+    public func addEventSource(eventSourceConfig: EventSourceConfiguration) {
         
         let eventSource = EventSource(configuration: eventSourceConfig, delegate: self)
         self.eventSources.append(eventSource)
     }
 }
 
+// MARK: - EventSourceDelegate
 extension SSEManager: EventSourceDelegate {
     
     func eventSource(eventSource: EventSource, didChangeState state: EventSource.ReadyState) {
         
+        //TODO: Logging
         print("State -> \(eventSource) -> \(state)")
     }
     
@@ -92,9 +65,7 @@ extension SSEManager: EventSourceDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName(Notification.Connected.rawValue, object: self, userInfo: [ Notification.Key.Source.rawValue : eventSource.configuration.uri ])
     }
     
-    func eventSourceWillDisconnect(eventSource: EventSource) {
-        
-    }
+    func eventSourceWillDisconnect(eventSource: EventSource) {}
     
     func eventSourceDidDisconnect(eventSource: EventSource) {
         
@@ -129,6 +100,7 @@ extension SSEManager: EventSourceDelegate {
     
     func eventSource(eventSource: EventSource, didEncounterError error: EventSource.Error) {
         
+        //TODO: Send error notification
         //print("Error -> \(eventSource) -> \(error)")
     }
 }
