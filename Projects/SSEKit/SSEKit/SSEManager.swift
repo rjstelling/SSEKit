@@ -42,12 +42,26 @@ public class SSEManager {
     }
     
     /**
-     Add an EventSource to the manager
+     Add an EventSource to the manager.
      */
-    public func addEventSource(eventSourceConfig: EventSourceConfiguration) {
+    public func addEventSource(eventSourceConfig: EventSourceConfiguration) -> EventSource {
         
         let eventSource = EventSource(configuration: eventSourceConfig, delegate: self)
         self.eventSources.append(eventSource)
+        
+        return eventSource
+    }
+    
+    /**
+     Disconnect and remove EventSource from manager.
+     */
+    public func removeEventSource(eventSource: EventSource) {
+        
+        eventSource.disconnect()
+        
+        if let esIndex = self.eventSources.indexOf(eventSource) {
+            self.eventSources.removeAtIndex(esIndex)
+        }
     }
 }
 
@@ -62,7 +76,7 @@ extension SSEManager: EventSourceDelegate {
     
     func eventSourceDidConnect(eventSource: EventSource) {
         
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Connected.rawValue, object: self, userInfo: [ Notification.Key.Source.rawValue : eventSource.configuration.uri ])
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Connected.rawValue, object: eventSource, userInfo: [ Notification.Key.Source.rawValue : eventSource.configuration.uri ])
     }
     
     func eventSourceWillDisconnect(eventSource: EventSource) {}
@@ -74,7 +88,7 @@ extension SSEManager: EventSourceDelegate {
             self.eventSources.removeAtIndex(index)
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Disconnected.rawValue, object: self, userInfo: [ Notification.Key.Source.rawValue : eventSource.configuration.uri ])
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Disconnected.rawValue, object: eventSource, userInfo: [ Notification.Key.Source.rawValue : eventSource.configuration.uri ])
     }
     
     func eventSource(eventSource: EventSource, didReceiveEvent event: EventSource.Event) {
@@ -95,7 +109,7 @@ extension SSEManager: EventSourceDelegate {
             userInfo[Notification.Key.Data.rawValue] = data
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Event.rawValue, object: self, userInfo: userInfo)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Event.rawValue, object: eventSource, userInfo: userInfo)
     }
     
     func eventSource(eventSource: EventSource, didEncounterError error: EventSource.Error) {

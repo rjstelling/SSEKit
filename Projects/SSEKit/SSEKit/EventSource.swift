@@ -98,7 +98,7 @@ public class EventSource: NSObject {
         connect()
     }
     
-    func connect() {
+    internal func connect() {
         
         self.readyState = .Connecting
         
@@ -137,7 +137,7 @@ public class EventSource: NSObject {
         }
     }
     
-    func disconnect() {
+    internal func disconnect() {
         
         guard let t = self.task where t.state != .Canceling else {
             
