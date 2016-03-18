@@ -21,22 +21,22 @@ class ViewController: UIViewController {
             
             //SSEManager.Notification.Key.Name.rawValue
             
-            guard let name = $0.userInfo?[SSEManager.Notification.Key.Name.rawValue], let data = $0.userInfo?[SSEManager.Notification.Key.Data.rawValue] as? NSData else {
-                
-//                let scanner: NSScanner?
-                
-//                scanner?.scanUpToString(<#T##string: String##String#>, intoString: <#T##AutoreleasingUnsafeMutablePointer<NSString?>#>)
-//                scanString
+            guard   let name = $0.userInfo?[SSEManager.Notification.Key.Name.rawValue],
+                    let data = $0.userInfo?[SSEManager.Notification.Key.Data.rawValue] as? NSData,
+                    let identifier = $0.userInfo?[SSEManager.Notification.Key.Identifier.rawValue] as? String,
+                    let timestamp = $0.userInfo?[SSEManager.Notification.Key.Timestamp.rawValue] as? NSDate
+            else {
+            
                 return
             }
             
             let dataStr = String(data: data, encoding: 4)!
             
-            print("NOTE: \(name) -> \(dataStr)")
+            print("\(timestamp): [\(identifier)] \(name) -> \(dataStr)")
         }
         
         
-        let config = EventSourceConfiguration(withHost: "192.168.103.36", port: 15081, endpoint: "/notify", timeout: 300, events: ["nowplaying"])
+        let config = EventSourceConfiguration(withHost: "192.168.37.", port: 15081, endpoint: "/notify", timeout: 300, events: ["nowplaying"])
         //let config2 = EventSourceConfiguration(withHost: "localhost", port: 8080, endpoint: "/sse", events: nil)
         //let config4 = EventSourceConfiguration(withHost: "192.168.37.76", port: 8080, endpoint: "/sse", events: ["bad-event"])
         
