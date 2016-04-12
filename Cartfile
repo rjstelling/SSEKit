@@ -1,2 +1,2 @@
 # State, get the latest version of State
-git "https://github.com/rjstelling/State.git"
+github "rjstelling/State.git"
