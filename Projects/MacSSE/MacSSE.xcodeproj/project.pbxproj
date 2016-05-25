@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A9127F71CF3442B008CA0FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9127F61CF3442B008CA0FE /* AppDelegate.swift */; };
+		2A9127F91CF3442B008CA0FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9127F81CF3442B008CA0FE /* ViewController.swift */; };
+		2A9127FB1CF3442B008CA0FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9127FA1CF3442B008CA0FE /* Assets.xcassets */; };
+		2A9127FE1CF3442B008CA0FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9127FC1CF3442B008CA0FE /* Main.storyboard */; };
+		2A91283B1CF3486C008CA0FE /* MacSSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9128391CF3486C008CA0FE /* MacSSEKit.framework */; };
+		2A91283E1CF3487E008CA0FE /* MacSSEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9128391CF3486C008CA0FE /* MacSSEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2A91283F1CF3487E008CA0FE /* MacState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A91283A1CF3486C008CA0FE /* MacState.framework */; };
+		2A9128401CF3487E008CA0FE /* MacState.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A91283A1CF3486C008CA0FE /* MacState.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2A9128131CF3459E008CA0FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2A9128401CF3487E008CA0FE /* MacState.framework in Embed Frameworks */,
+				2A91283E1CF3487E008CA0FE /* MacSSEKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2A9127F31CF3442B008CA0FE /* MacSSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacSSE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A9127F61CF3442B008CA0FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A9127F81CF3442B008CA0FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A9127FA1CF3442B008CA0FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A9127FD1CF3442B008CA0FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A9127FF1CF3442B008CA0FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A9128391CF3486C008CA0FE /* MacSSEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacSSEKit.framework; path = ../../../../../../../../../../Volumes/Projects/SSEKit/Projects/SSEKit/build/Debug/MacSSEKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A91283A1CF3486C008CA0FE /* MacState.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacState.framework; path = ../../../../../../../../../../Volumes/Projects/SSEKit/Carthage/Checkouts/State/State/build/Debug/MacState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A9127F01CF3442B008CA0FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A91283F1CF3487E008CA0FE /* MacState.framework in Frameworks */,
+				2A91283B1CF3486C008CA0FE /* MacSSEKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A9127EA1CF3442B008CA0FE = {
+			isa = PBXGroup;
+			children = (
+				2A9127F51CF3442B008CA0FE /* MacSSE */,
+				2A91280E1CF34493008CA0FE /* Framework */,
+				2A9127F41CF3442B008CA0FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A9127F41CF3442B008CA0FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A9127F31CF3442B008CA0FE /* MacSSE.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A9127F51CF3442B008CA0FE /* MacSSE */ = {
+			isa = PBXGroup;
+			children = (
+				2A9127F61CF3442B008CA0FE /* AppDelegate.swift */,
+				2A9127F81CF3442B008CA0FE /* ViewController.swift */,
+				2A9127FA1CF3442B008CA0FE /* Assets.xcassets */,
+				2A9127FC1CF3442B008CA0FE /* Main.storyboard */,
+				2A9127FF1CF3442B008CA0FE /* Info.plist */,
+			);
+			path = MacSSE;
+			sourceTree = "<group>";
+		};
+		2A91280E1CF34493008CA0FE /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				2A9128391CF3486C008CA0FE /* MacSSEKit.framework */,
+				2A91283A1CF3486C008CA0FE /* MacState.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A9127F21CF3442B008CA0FE /* MacSSE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A9128021CF3442B008CA0FE /* Build configuration list for PBXNativeTarget "MacSSE" */;
+			buildPhases = (
+				2A9127EF1CF3442B008CA0FE /* Sources */,
+				2A9127F01CF3442B008CA0FE /* Frameworks */,
+				2A9127F11CF3442B008CA0FE /* Resources */,
+				2A9128131CF3459E008CA0FE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacSSE;
+			productName = MacSSE;
+			productReference = 2A9127F31CF3442B008CA0FE /* MacSSE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A9127EB1CF3442B008CA0FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Richard Stelling";
+				TargetAttributes = {
+					2A9127F21CF3442B008CA0FE = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 2A9127EE1CF3442B008CA0FE /* Build configuration list for PBXProject "MacSSE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A9127EA1CF3442B008CA0FE;
+			productRefGroup = 2A9127F41CF3442B008CA0FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A9127F21CF3442B008CA0FE /* MacSSE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A9127F11CF3442B008CA0FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9127FB1CF3442B008CA0FE /* Assets.xcassets in Resources */,
+				2A9127FE1CF3442B008CA0FE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A9127EF1CF3442B008CA0FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9127F91CF3442B008CA0FE /* ViewController.swift in Sources */,
+				2A9127F71CF3442B008CA0FE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2A9127FC1CF3442B008CA0FE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A9127FD1CF3442B008CA0FE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A9128001CF3442B008CA0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2A9128011CF3442B008CA0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2A9128031CF3442B008CA0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MacSSE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.MacSSE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2A9128041CF3442B008CA0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MacSSE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.MacSSE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A9127EE1CF3442B008CA0FE /* Build configuration list for PBXProject "MacSSE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A9128001CF3442B008CA0FE /* Debug */,
+				2A9128011CF3442B008CA0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A9128021CF3442B008CA0FE /* Build configuration list for PBXNativeTarget "MacSSE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A9128031CF3442B008CA0FE /* Debug */,
+				2A9128041CF3442B008CA0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A9127EB1CF3442B008CA0FE /* Project object */;
+}
