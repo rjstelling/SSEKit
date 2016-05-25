@@ -71,19 +71,10 @@ public class EventSource: NSObject {
         }
     }
     
-    private let opsQueue = NSOperationQueue()
-    
     internal let configuration: EventSourceConfiguration
+    
+    private let opsQueue = NSOperationQueue()
     private let delegate: EventSourceDelegate?
-    
-    private var connectionTimer: NSTimer? = nil
-    
-    private func cancelConnectionTimer() {
-        
-        self.connectionTimer?.invalidate()
-        self.connectionTimer = nil
-    }
-    
     private var task: NSURLSessionDataTask?
     
     internal init(configuration: EventSourceConfiguration, delegate: EventSourceDelegate? = nil) {
@@ -120,16 +111,8 @@ public class EventSource: NSObject {
         
         if let url = urlComponents.URL {
             
-            print("URL: \(url)")
-            
-//            if #available(Swift 2.2) {
-//                //self.connectionTimer = NSTimer.scheduledTimerWithTimeInterval(self.configuration.timeout, target: self, selector: #selector(onConnectionTimeout(_:)), userInfo: nil, repeats: false)
-//            }
-//            else {
-//                self.connectionTimer = NSTimer.scheduledTimerWithTimeInterval(self.configuration.timeout, target: self, selector: "onConnectionTimeout:", userInfo: nil, repeats: false)
-//            }
-            
-            self.connectionTimer = NSTimer.scheduledTimerWithTimeInterval(self.configuration.timeout, target: self, selector: "onConnectionTimeout:", userInfo: nil, repeats: false)
+            //print("URL: \(url)")
+
             self.task = session.dataTaskWithURL(url)
             self.task?.resume()
         }
@@ -155,17 +138,6 @@ public class EventSource: NSObject {
     }
 }
 
-extension EventSource {
-    
-    @objc
-    private func onConnectionTimeout(timer: NSTimer) {
-        
-        timer.invalidate()
-        
-        disconnect()
-    }
-}
-
 extension EventSource: NSURLSessionDataDelegate {
     
     public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
@@ -173,38 +145,38 @@ extension EventSource: NSURLSessionDataDelegate {
         disconnect()
     }
     
-    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
         
-        cancelConnectionTimer() //If we get here we have some kind of connection we can handle
-        
-        guard let httpResponce = response as? NSHTTPURLResponse else {
+        guard self.readyState != .Closed else {
             
-            self.delegate?.eventSource(self, didEncounterError: .Unknown)
-            disconnect()
-            completionHandler(.Cancel)
+            //Discard any data from here on in
             return
         }
         
-        switch httpResponce.statusCode {
+        guard let responce = dataTask.response as? NSHTTPURLResponse else {
             
-        case 200...299:
-            fallthrough
-        case 300...399:
-            self.delegate?.eventSourceDidConnect(self)
-            completionHandler(.Allow)
-            self.readyState = .Open
-            break
-        
-        case 400...499:
-            fallthrough
-        default:
-            self.delegate?.eventSource(self, didEncounterError: .SourceNotFound(httpResponce.statusCode))
-            disconnect()
-            completionHandler(.Cancel)
+            return //not connected yet
         }
-    }
-
-    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+        
+        if self.readyState == .Connecting {
+            
+            switch responce.statusCode {
+                
+            case 200...299:
+                fallthrough
+            case 300...399:
+                self.delegate?.eventSourceDidConnect(self)
+                self.readyState = .Open
+                break
+                
+            case 400...499:
+                fallthrough
+            default:
+                self.delegate?.eventSource(self, didEncounterError: .SourceNotFound(responce.statusCode))
+                disconnect()
+                return
+            }
+        }
         
         if Process.arguments.count > 1 && Process.arguments[1] == "INLINE" {
             inline_URLSession(session, dataTask: dataTask, didReceiveData: data)
@@ -270,10 +242,7 @@ extension EventSource: NSURLSessionDataDelegate {
                     
                 } while(!stop)
                 
-                
-                /////////////////////////////
-                // dont create events if nobody is listerning
-                /////////////////////////////
+                // Don't create events if nobody is listerning
                 if let evnArray = self.configuration.events, let evn = eventName where evnArray.contains(evn) {
                     
                     dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
@@ -295,13 +264,10 @@ extension EventSource: NSURLSessionDataDelegate {
                             delegate.eventSource(self, didReceiveEvent: event)
                         }
                     }
-                    
                 }
-                ////////////////////////////
             }
         }
     }
-
 }
 
 extension EventSource: EventParseDelegate {
