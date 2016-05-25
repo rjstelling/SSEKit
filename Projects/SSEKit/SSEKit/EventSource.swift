@@ -103,6 +103,7 @@ public class EventSource: NSObject {
         self.readyState = .Connecting
         
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        sessionConfig.requestCachePolicy = .ReloadIgnoringLocalCacheData
         sessionConfig.timeoutIntervalForRequest = NSTimeInterval(INT_MAX)
         sessionConfig.timeoutIntervalForResource = NSTimeInterval(INT_MAX)
         sessionConfig.HTTPAdditionalHeaders = ["Accept" : "text/event-stream", "Cache-Control" : "no-cache"]
