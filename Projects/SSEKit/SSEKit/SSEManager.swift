@@ -47,7 +47,10 @@ public class SSEManager {
     public func addEventSource(eventSourceConfig: EventSourceConfiguration) -> EventSource {
         
         let eventSource = EventSource(configuration: eventSourceConfig, delegate: self)
-        self.eventSources.append(eventSource)
+        
+        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+            self.eventSources.append(eventSource)
+        }
         
         return eventSource
     }
@@ -59,8 +62,10 @@ public class SSEManager {
         
         eventSource.disconnect()
         
-        if let esIndex = self.eventSources.indexOf(eventSource) {
-            self.eventSources.removeAtIndex(esIndex)
+        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+            if let esIndex = self.eventSources.indexOf(eventSource) {
+                self.eventSources.removeAtIndex(esIndex)
+            }
         }
     }
 }
@@ -84,8 +89,10 @@ extension SSEManager: EventSourceDelegate {
     func eventSourceDidDisconnect(eventSource: EventSource) {
         
         //Remove disconnected EventSource objects from the array
-        if let index = self.eventSources.indexOf(eventSource) {
-            self.eventSources.removeAtIndex(index)
+        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+            if let esIndex = self.eventSources.indexOf(eventSource) {
+                self.eventSources.removeAtIndex(esIndex)
+            }
         }
         
         NSNotificationCenter.defaultCenter().postNotificationName(Notification.Disconnected.rawValue, object: eventSource, userInfo: [ Notification.Key.Source.rawValue : eventSource.configuration.uri ])
