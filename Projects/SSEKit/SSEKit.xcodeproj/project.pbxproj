@@ -15,6 +15,10 @@
 		2AA0D23B1C7C9A3B006E83D0 /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */; };
 		2AA0D2401C7C9A3B006E83D0 /* SSEKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0D23F1C7C9A3B006E83D0 /* SSEKitTests.swift */; };
 		2AB7AD181D53743600A5F64A /* SSEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AB7AD761D53835E00A5F64A /* SSEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */; };
+		2AB7AD771D53835E00A5F64A /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC31C7CB8A80052DFCE /* EventSource.swift */; };
+		2AB7AD781D53835E00A5F64A /* EventSourceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */; };
+		2AB7AD791D53835E00A5F64A /* EventParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +278,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB7AD761D53835E00A5F64A /* SSEManager.swift in Sources */,
+				2AB7AD771D53835E00A5F64A /* EventSource.swift in Sources */,
+				2AB7AD791D53835E00A5F64A /* EventParseOperation.swift in Sources */,
+				2AB7AD781D53835E00A5F64A /* EventSourceConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +454,7 @@
 		2AB7AD161D53740E00A5F64A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -466,6 +475,7 @@
 		2AB7AD171D53740E00A5F64A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -520,6 +530,7 @@
 				2AB7AD171D53740E00A5F64A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
