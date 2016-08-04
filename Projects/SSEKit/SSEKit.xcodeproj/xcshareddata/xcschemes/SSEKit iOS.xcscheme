@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2AA0D22F1C7C9A3B006E83D0"
                BuildableName = "SSEKit.framework"
-               BlueprintName = "SSEKit"
+               BlueprintName = "SSEKit iOS"
                ReferencedContainer = "container:SSEKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -39,7 +39,7 @@
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "2AA0D22F1C7C9A3B006E83D0"
                      BuildableName = "SSEKit.framework"
-                     BlueprintName = "SSEKit"
+                     BlueprintName = "SSEKit iOS"
                      ReferencedContainer = "container:SSEKit.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AA0D22F1C7C9A3B006E83D0"
             BuildableName = "SSEKit.framework"
-            BlueprintName = "SSEKit"
+            BlueprintName = "SSEKit iOS"
             ReferencedContainer = "container:SSEKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -92,7 +92,7 @@
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "2AA0D22F1C7C9A3B006E83D0"
                      BuildableName = "SSEKit.framework"
-                     BlueprintName = "SSEKit"
+                     BlueprintName = "SSEKit iOS"
                      ReferencedContainer = "container:SSEKit.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -104,7 +104,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AA0D22F1C7C9A3B006E83D0"
             BuildableName = "SSEKit.framework"
-            BlueprintName = "SSEKit"
+            BlueprintName = "SSEKit iOS"
             ReferencedContainer = "container:SSEKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -122,7 +122,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2AA0D22F1C7C9A3B006E83D0"
             BuildableName = "SSEKit.framework"
-            BlueprintName = "SSEKit"
+            BlueprintName = "SSEKit iOS"
             ReferencedContainer = "container:SSEKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
