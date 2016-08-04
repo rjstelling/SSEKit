@@ -14,6 +14,7 @@
 		2AA0D2341C7C9A3B006E83D0 /* SSEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AA0D23B1C7C9A3B006E83D0 /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */; };
 		2AA0D2401C7C9A3B006E83D0 /* SSEKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0D23F1C7C9A3B006E83D0 /* SSEKitTests.swift */; };
+		2AB7AD181D53743600A5F64A /* SSEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,10 +34,12 @@
 		2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventParseOperation.swift; sourceTree = "<group>"; };
 		2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSEKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSEKit.h; sourceTree = "<group>"; };
-		2AA0D2351C7C9A3B006E83D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AA0D2351C7C9A3B006E83D0 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		2AA0D23A1C7C9A3B006E83D0 /* SSEKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSEKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA0D23F1C7C9A3B006E83D0 /* SSEKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSEKitTests.swift; sourceTree = "<group>"; };
 		2AA0D2411C7C9A3B006E83D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AB7AD101D53740E00A5F64A /* SSEKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSEKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AB7AD191D53744400A5F64A /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AA0D23B1C7C9A3B006E83D0 /* SSEKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AB7AD0C1D53740E00A5F64A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +82,7 @@
 			children = (
 				2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */,
 				2AA0D23A1C7C9A3B006E83D0 /* SSEKitTests.xctest */,
+				2AB7AD101D53740E00A5F64A /* SSEKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,11 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */,
-				2AA0D2351C7C9A3B006E83D0 /* Info.plist */,
 				2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */,
 				2A18FBC31C7CB8A80052DFCE /* EventSource.swift */,
 				2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */,
 				2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */,
+				2AA0D2351C7C9A3B006E83D0 /* Info-iOS.plist */,
+				2AB7AD191D53744400A5F64A /* Info-macOS.plist */,
 			);
 			path = SSEKit;
 			sourceTree = "<group>";
@@ -109,12 +121,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AB7AD0D1D53740E00A5F64A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AB7AD181D53743600A5F64A /* SSEKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2AA0D22F1C7C9A3B006E83D0 /* SSEKit */ = {
+		2AA0D22F1C7C9A3B006E83D0 /* SSEKit iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2AA0D2441C7C9A3B006E83D0 /* Build configuration list for PBXNativeTarget "SSEKit" */;
+			buildConfigurationList = 2AA0D2441C7C9A3B006E83D0 /* Build configuration list for PBXNativeTarget "SSEKit iOS" */;
 			buildPhases = (
 				2AA0D22B1C7C9A3B006E83D0 /* Sources */,
 				2AA0D22C1C7C9A3B006E83D0 /* Frameworks */,
@@ -125,7 +145,7 @@
 			);
 			dependencies = (
 			);
-			name = SSEKit;
+			name = "SSEKit iOS";
 			productName = SSEKit;
 			productReference = 2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -148,6 +168,24 @@
 			productReference = 2AA0D23A1C7C9A3B006E83D0 /* SSEKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2AB7AD0F1D53740E00A5F64A /* SSEKit macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AB7AD151D53740E00A5F64A /* Build configuration list for PBXNativeTarget "SSEKit macOS" */;
+			buildPhases = (
+				2AB7AD0B1D53740E00A5F64A /* Sources */,
+				2AB7AD0C1D53740E00A5F64A /* Frameworks */,
+				2AB7AD0D1D53740E00A5F64A /* Headers */,
+				2AB7AD0E1D53740E00A5F64A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SSEKit macOS";
+			productName = "SSEKit macOS";
+			productReference = 2AB7AD101D53740E00A5F64A /* SSEKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,6 +202,9 @@
 					2AA0D2391C7C9A3B006E83D0 = {
 						CreatedOnToolsVersion = 7.3;
 					};
+					2AB7AD0F1D53740E00A5F64A = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 2AA0D22A1C7C9A3B006E83D0 /* Build configuration list for PBXProject "SSEKit" */;
@@ -178,7 +219,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2AA0D22F1C7C9A3B006E83D0 /* SSEKit */,
+				2AA0D22F1C7C9A3B006E83D0 /* SSEKit iOS */,
+				2AB7AD0F1D53740E00A5F64A /* SSEKit macOS */,
 				2AA0D2391C7C9A3B006E83D0 /* SSEKitTests */,
 			);
 		};
@@ -193,6 +235,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2AA0D2381C7C9A3B006E83D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AB7AD0E1D53740E00A5F64A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -221,12 +270,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AB7AD0B1D53740E00A5F64A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		2AA0D23D1C7C9A3B006E83D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2AA0D22F1C7C9A3B006E83D0 /* SSEKit */;
+			target = 2AA0D22F1C7C9A3B006E83D0 /* SSEKit iOS */;
 			targetProxy = 2AA0D23C1C7C9A3B006E83D0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -273,6 +329,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = SSEKit;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,6 +372,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SSEKit;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -333,12 +391,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SSEKit/Info.plist;
+				INFOPLIST_FILE = "SSEKit/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.SSEKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = all;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -354,12 +411,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SSEKit/Info.plist;
+				INFOPLIST_FILE = "SSEKit/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naimaudio.SSEKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = all;
 			};
@@ -387,6 +443,46 @@
 			};
 			name = Release;
 		};
+		2AB7AD161D53740E00A5F64A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SSEKit/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.empiricalmagic.SSEKit-macOS";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2AB7AD171D53740E00A5F64A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SSEKit/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.empiricalmagic.SSEKit-macOS";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,7 +495,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2AA0D2441C7C9A3B006E83D0 /* Build configuration list for PBXNativeTarget "SSEKit" */ = {
+		2AA0D2441C7C9A3B006E83D0 /* Build configuration list for PBXNativeTarget "SSEKit iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2AA0D2451C7C9A3B006E83D0 /* Debug */,
@@ -416,6 +512,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2AB7AD151D53740E00A5F64A /* Build configuration list for PBXNativeTarget "SSEKit macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AB7AD161D53740E00A5F64A /* Debug */,
+				2AB7AD171D53740E00A5F64A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

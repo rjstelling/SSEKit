@@ -17,11 +17,4 @@
          location = "group:Playgrounds/State Tests Playground.playground">
       </FileRef>
    </Group>
-   <Group
-      location = "container:"
-      name = "Frameworks">
-      <FileRef
-         location = "group:Carthage/Checkouts/State/State/State.xcodeproj">
-      </FileRef>
-   </Group>
 </Workspace>
