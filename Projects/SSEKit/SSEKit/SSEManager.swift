@@ -72,7 +72,9 @@ public class SSEManager {
     /**
      Disconnect and remove EventSource from manager.
      */
-    internal func removeEventSource<T: EventSource where T: EventSourceConnectable>(eventSource: T) {
+    public func removeEventSource<T: EventSource where T: EventSourceConnectable>(eventSource: T) {
+        
+        //TODO: Clean up - this is how clients disconnect the source.
         
         eventSource.disconnect()
 
