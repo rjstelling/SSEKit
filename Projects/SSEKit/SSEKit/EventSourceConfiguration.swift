@@ -19,7 +19,7 @@ public struct EventSourceConfiguration {
     internal let events: [String]?
     
     internal var uri: String {
-        return "\(self.hostAddress):\(self.port)/\(self.endpoint)"
+        return "\(self.hostAddress):\(self.port)\(self.endpoint)"
     }
     
     //options?
