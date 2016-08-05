@@ -10,7 +10,6 @@
 		2A18FBC41C7CB8A80052DFCE /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC31C7CB8A80052DFCE /* EventSource.swift */; };
 		2A18FBC61C7CB8C40052DFCE /* EventSourceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */; };
 		2A18FBC81C7CB8EF0052DFCE /* SSEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */; };
-		2A6C696D1C90789A0064CD84 /* EventParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */; };
 		2AA0D2341C7C9A3B006E83D0 /* SSEKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AA0D2331C7C9A3B006E83D0 /* SSEKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AA0D23B1C7C9A3B006E83D0 /* SSEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AA0D2301C7C9A3B006E83D0 /* SSEKit.framework */; };
 		2AA0D2401C7C9A3B006E83D0 /* SSEKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0D23F1C7C9A3B006E83D0 /* SSEKitTests.swift */; };
@@ -18,7 +17,6 @@
 		2AB7AD761D53835E00A5F64A /* SSEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */; };
 		2AB7AD771D53835E00A5F64A /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC31C7CB8A80052DFCE /* EventSource.swift */; };
 		2AB7AD781D53835E00A5F64A /* EventSourceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */; };
-		2AB7AD791D53835E00A5F64A /* EventParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +96,7 @@
 				2A18FBC71C7CB8EF0052DFCE /* SSEManager.swift */,
 				2A18FBC31C7CB8A80052DFCE /* EventSource.swift */,
 				2A18FBC51C7CB8C40052DFCE /* EventSourceConfiguration.swift */,
-				2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */,
+				2ABF97781D54B0CD00CD8729 /* Operations */,
 				2AA0D2351C7C9A3B006E83D0 /* Info-iOS.plist */,
 				2AB7AD191D53744400A5F64A /* Info-macOS.plist */,
 			);
@@ -112,6 +110,14 @@
 				2AA0D2411C7C9A3B006E83D0 /* Info.plist */,
 			);
 			path = SSEKitTests;
+			sourceTree = "<group>";
+		};
+		2ABF97781D54B0CD00CD8729 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				2A6C696C1C90789A0064CD84 /* EventParseOperation.swift */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +267,6 @@
 			files = (
 				2A18FBC61C7CB8C40052DFCE /* EventSourceConfiguration.swift in Sources */,
 				2A18FBC81C7CB8EF0052DFCE /* SSEManager.swift in Sources */,
-				2A6C696D1C90789A0064CD84 /* EventParseOperation.swift in Sources */,
 				2A18FBC41C7CB8A80052DFCE /* EventSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +285,6 @@
 			files = (
 				2AB7AD761D53835E00A5F64A /* SSEManager.swift in Sources */,
 				2AB7AD771D53835E00A5F64A /* EventSource.swift in Sources */,
-				2AB7AD791D53835E00A5F64A /* EventParseOperation.swift in Sources */,
 				2AB7AD781D53835E00A5F64A /* EventSourceConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

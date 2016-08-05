@@ -116,3 +116,20 @@ internal protocol EventParseDelegate: class {
     
     func eventParser(didParseEvent identifier: String, name: String?, data: String?, timestamp: NSDate)
 }
+
+
+/*
+ extension EventSource: EventParseDelegate {
+ 
+ func eventParser(didParseEvent identifier: String, name: String?, data: String?, timestamp: NSDate) {
+ 
+ //TODO: Dispatch on another background thread?
+ 
+ dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+ 
+ if let event = Event(withEventSource: self, identifier: identifier, event: name, data: data?.dataUsingEncoding(NSUTF8StringEncoding)) {
+ self.delegate.eventSource(self, didReceiveEvent: event)
+ }
+ }
+ }
+ }*/
