@@ -13,8 +13,5 @@
       <FileRef
          location = "group:Playgrounds/SSEKit Playground.playground">
       </FileRef>
-      <FileRef
-         location = "group:Playgrounds/State Tests Playground.playground">
-      </FileRef>
    </Group>
 </Workspace>
