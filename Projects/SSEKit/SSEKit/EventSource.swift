@@ -33,7 +33,7 @@ public protocol EventSourceConformist {
     init(configuration: EventSourceConfiguration, delegate: EventSourceDelegate)
 }
 
-internal protocol EventSourceConnectable {
+public protocol EventSourceConnectable {
     
     func connect()
     func disconnect()
@@ -112,7 +112,7 @@ public final class PrimaryEventSource: EventSource, EventSourceConnectable {
         }
     }
     
-    func connect() {
+    public func connect() {
         
         self.readyState = .Connecting
         
@@ -144,7 +144,7 @@ public final class PrimaryEventSource: EventSource, EventSourceConnectable {
         }
     }
     
-    func disconnect() {
+    public func disconnect() {
         
         guard let t = self.task where t.state != .Canceling else {
             return
@@ -295,7 +295,7 @@ public final class ChildEventSource: EventSource, EventSourceConnectable {
         self.primaryEventSource = primaryEventSource
     }
     
-    func connect() {
+    public func connect() {
         
         // TODO: Return an error if there is a probelm with `primaryEventSource`
         
@@ -304,7 +304,7 @@ public final class ChildEventSource: EventSource, EventSourceConnectable {
         self.delegate.eventSourceDidConnect(self)
     }
     
-    func disconnect() {
+    public func disconnect() {
         
         delegate.eventSourceWillDisconnect(self)
         self.readyState = .Closed
