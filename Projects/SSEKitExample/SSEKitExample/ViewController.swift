@@ -59,14 +59,12 @@ class ViewController: UIViewController {
         }
 */
         
-        let configNowPlaying = EventSourceConfiguration(withHost: "192.168.37.123", port: 15081, endpoint: "/notify", timeout: 10, events: nil)
+        let configNowPlaying = EventSourceConfiguration(withHost: "192.168.37.123", port: 15081, endpoint: "/notify", timeout: 10, events: ["lists", "inputs", "albums"], name: "📢")
         let npEs = manager?.addEventSource(configNowPlaying)
-        npEs?.name = "📢"
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onEvent(_:)), name: SSEManager.Notification.Event.rawValue, object: npEs)
         
-        let configInput = EventSourceConfiguration(withHost: "192.168.37.123", port: 15081, endpoint: "/notify", timeout: 10, events: ["nowplaying"])
+        let configInput = EventSourceConfiguration(withHost: "192.168.37.123", port: 15081, endpoint: "/notify", timeout: 10, events: ["nowplaying"], name: "🎙")
         let inptEs = manager?.addEventSource(configInput)
-        inptEs?.name = "🎙"
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onEvent(_:)), name: SSEManager.Notification.Event.rawValue, object: inptEs)
         
         //manager = SSEManager(sources: [config2])
