@@ -10,6 +10,8 @@ import Foundation
 
 public struct EventSourceConfiguration {
     
+    internal let name: String?
+    
     internal let hostAddress: String
     internal let port: Int
     internal let endpoint: String
@@ -24,7 +26,7 @@ public struct EventSourceConfiguration {
     
     //options?
     
-    public init(withHost host: String, port: Int = 80, endpoint: String, timeout: NSTimeInterval = 5, events: [String]? = nil) {
+    public init(withHost host: String, port: Int = 80, endpoint: String, timeout: NSTimeInterval = 5, events: [String]? = nil, name: String? = nil) {
         
         precondition(endpoint.characters.first == "/", "Endpoint does not begin with a /")
         
@@ -34,5 +36,7 @@ public struct EventSourceConfiguration {
         self.timeout = timeout
         
         self.events = events
+        
+        self.name = name
     }
 }
