@@ -41,7 +41,9 @@ internal protocol EventSourceConnectable {
 
 public class EventSource: NSObject, EventSourceConformist {
 
-    public var name: String?
+    public var name: String? {
+        return self.configuration.name
+    }
     
     public var readyState: ReadyState = .Closed
     public var configuration: EventSourceConfiguration
@@ -295,25 +297,32 @@ public final class ChildEventSource: EventSource, EventSourceConnectable {
     
     func connect() {
         
-        print("CHILD CONNECTED")
+        // TODO: Return an error if there is a probelm with `primaryEventSource`
+        
+        //print("CHILD CONNECTED")
         self.primaryEventSource?.add(child: self)
         self.delegate.eventSourceDidConnect(self)
     }
     
     func disconnect() {
         
+        delegate.eventSourceWillDisconnect(self)
+        self.readyState = .Closed
+        delegate.eventSourceDidDisconnect(self)
     }
 }
 
 extension ChildEventSource: EventSourceDelegate {
     
-    public func eventSource(eventSource: EventSource, didChangeState state: ReadyState) {} //???: Ignore
+    public func eventSource(eventSource: EventSource, didChangeState state: ReadyState) { /* Ignore */ }
     
-    public func eventSourceDidConnect(eventSource: EventSource) {} //???: Ignore
+    public func eventSourceDidConnect(eventSource: EventSource) { /* Ignore */ }
     
-    public func eventSourceWillDisconnect(eventSource: EventSource) {} //TODO
+    public func eventSourceWillDisconnect(eventSource: EventSource) { /* Ignore */ }
     
-    public func eventSourceDidDisconnect(eventSource: EventSource) {} //TODO
+    public func eventSourceDidDisconnect(eventSource: EventSource) {
+        self.disconnect()
+    }
     
     public func eventSource(eventSource: EventSource, didReceiveEvent event: Event) {
     
@@ -337,10 +346,7 @@ extension ChildEventSource: EventSourceDelegate {
         }
     }
     
-    public func eventSource(eventSource: EventSource, didEncounterError error: Error) {
-    
-        
-    }
+    public func eventSource(eventSource: EventSource, didEncounterError error: Error) { /* Ignore */ }
 }
 
 public protocol EventSourceDelegate: class {
