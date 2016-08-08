@@ -32,10 +32,11 @@ public extension SSEManager {
 // MARK: - SSEManager
 public class SSEManager {
     
+    private var primaryEventSource: PrimaryEventSource?
     private var eventSources = Set<EventSource>()
     
     public init(sources: [EventSourceConfiguration]) {
-    
+        
         for config in sources {
             addEventSource(config)
         }
@@ -45,19 +46,21 @@ public class SSEManager {
      Add an EventSource to the manager.
      */
     public func addEventSource(eventSourceConfig: EventSourceConfiguration) -> EventSource {
-    
+        
         var eventSource: EventSource!
         
-        if let primaryIndex = self.eventSources.indexOf( { eventSourceConfig.uri == $0.configuration.uri } ) {
+        dispatch_sync(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
             
-            if let primaryEventSource = self.eventSources[primaryIndex] as? PrimaryEventSource {
-                eventSource = ChildEventSource(withConfiguration: eventSourceConfig, primaryEventSource: primaryEventSource, delegate: self)
+            if self.primaryEventSource == nil {
+                eventSource = PrimaryEventSource(configuration: eventSourceConfig, delegate: self)
+                self.primaryEventSource = eventSource as? PrimaryEventSource
+            }
+            else {
+                eventSource = ChildEventSource(withConfiguration: eventSourceConfig, primaryEventSource: self.primaryEventSource!, delegate: self)
             }
         }
-        else {
-            
-            eventSource = PrimaryEventSource(configuration: eventSourceConfig, delegate: self)
-        }
+        
+        precondition(eventSource != nil, "Cannot be nil.")
         
         dispatch_sync(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
             self.eventSources.insert(eventSource)
